@@ -11,6 +11,19 @@
 		E5AFE87527D7A8F6008A89BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE87427D7A8F6008A89BD /* ContentView.swift */; };
 		E5AFE87727D7A8F7008A89BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5AFE87627D7A8F7008A89BD /* Assets.xcassets */; };
 		E5AFE87A27D7A8F7008A89BD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5AFE87927D7A8F7008A89BD /* Preview Assets.xcassets */; };
+		E5AFE88127D7AAC7008A89BD /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE88027D7AAC7008A89BD /* HeaderView.swift */; };
+		E5AFE88527D8A58A008A89BD /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE88427D8A58A008A89BD /* CustomSlider.swift */; };
+		E5AFE88827D8A5B1008A89BD /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE88727D8A5B1008A89BD /* Double.swift */; };
+		E5AFE88B27D8B6D0008A89BD /* MagnitudeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE88A27D8B6D0008A89BD /* MagnitudeChart.swift */; };
+		E5AFE88D27D8B729008A89BD /* SoundwaveSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE88C27D8B729008A89BD /* SoundwaveSlider.swift */; };
+		E5AFE88F27D8C33B008A89BD /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE88E27D8C33B008A89BD /* UIScreen.swift */; };
+		E5AFE89127D8F3D1008A89BD /* SoundsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE89027D8F3D1008A89BD /* SoundsList.swift */; };
+		E5AFE89327D8F682008A89BD /* SoundwaveRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE89227D8F682008A89BD /* SoundwaveRow.swift */; };
+		E5AFE89527D9F28C008A89BD /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE89427D9F28C008A89BD /* Sound.swift */; };
+		E5AFE89827DA3C53008A89BD /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE89727DA3C53008A89BD /* CircleButton.swift */; };
+		E5AFE89B27DA3EFA008A89BD /* AudioListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE89A27DA3EFA008A89BD /* AudioListViewModel.swift */; };
+		E5AFE89D27DB548B008A89BD /* AudioNodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE89C27DB548B008A89BD /* AudioNodeViewModel.swift */; };
+		E5AFE89F27DB556B008A89BD /* AVMutableCompositionTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE89E27DB556B008A89BD /* AVMutableCompositionTrack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +32,19 @@
 		E5AFE87427D7A8F6008A89BD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E5AFE87627D7A8F7008A89BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5AFE87927D7A8F7008A89BD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E5AFE88027D7AAC7008A89BD /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		E5AFE88427D8A58A008A89BD /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		E5AFE88727D8A5B1008A89BD /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		E5AFE88A27D8B6D0008A89BD /* MagnitudeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagnitudeChart.swift; sourceTree = "<group>"; };
+		E5AFE88C27D8B729008A89BD /* SoundwaveSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundwaveSlider.swift; sourceTree = "<group>"; };
+		E5AFE88E27D8C33B008A89BD /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		E5AFE89027D8F3D1008A89BD /* SoundsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsList.swift; sourceTree = "<group>"; };
+		E5AFE89227D8F682008A89BD /* SoundwaveRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundwaveRow.swift; sourceTree = "<group>"; };
+		E5AFE89427D9F28C008A89BD /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		E5AFE89727DA3C53008A89BD /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		E5AFE89A27DA3EFA008A89BD /* AudioListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioListViewModel.swift; sourceTree = "<group>"; };
+		E5AFE89C27DB548B008A89BD /* AudioNodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioNodeViewModel.swift; sourceTree = "<group>"; };
+		E5AFE89E27DB556B008A89BD /* AVMutableCompositionTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVMutableCompositionTrack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +77,11 @@
 		E5AFE87127D7A8F6008A89BD /* SoundMix */ = {
 			isa = PBXGroup;
 			children = (
+				E5AFE89927DA3EEA008A89BD /* ViewModels */,
+				E5AFE89627D9F293008A89BD /* Models */,
+				E5AFE88627D8A5A6008A89BD /* Extensions */,
+				E5AFE88227D7AADB008A89BD /* Views */,
 				E5AFE87227D7A8F6008A89BD /* SoundMixApp.swift */,
-				E5AFE87427D7A8F6008A89BD /* ContentView.swift */,
 				E5AFE87627D7A8F7008A89BD /* Assets.xcassets */,
 				E5AFE87827D7A8F7008A89BD /* Preview Content */,
 			);
@@ -65,6 +94,56 @@
 				E5AFE87927D7A8F7008A89BD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E5AFE88227D7AADB008A89BD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5AFE88927D8B6BD008A89BD /* SoundWave */,
+				E5AFE87427D7A8F6008A89BD /* ContentView.swift */,
+				E5AFE88027D7AAC7008A89BD /* HeaderView.swift */,
+				E5AFE89027D8F3D1008A89BD /* SoundsList.swift */,
+				E5AFE89227D8F682008A89BD /* SoundwaveRow.swift */,
+				E5AFE89727DA3C53008A89BD /* CircleButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E5AFE88627D8A5A6008A89BD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E5AFE89E27DB556B008A89BD /* AVMutableCompositionTrack.swift */,
+				E5AFE88727D8A5B1008A89BD /* Double.swift */,
+				E5AFE88E27D8C33B008A89BD /* UIScreen.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E5AFE88927D8B6BD008A89BD /* SoundWave */ = {
+			isa = PBXGroup;
+			children = (
+				E5AFE88427D8A58A008A89BD /* CustomSlider.swift */,
+				E5AFE88A27D8B6D0008A89BD /* MagnitudeChart.swift */,
+				E5AFE88C27D8B729008A89BD /* SoundwaveSlider.swift */,
+			);
+			path = SoundWave;
+			sourceTree = "<group>";
+		};
+		E5AFE89627D9F293008A89BD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E5AFE89427D9F28C008A89BD /* Sound.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E5AFE89927DA3EEA008A89BD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E5AFE89A27DA3EFA008A89BD /* AudioListViewModel.swift */,
+				E5AFE89C27DB548B008A89BD /* AudioNodeViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +216,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5AFE88527D8A58A008A89BD /* CustomSlider.swift in Sources */,
+				E5AFE89527D9F28C008A89BD /* Sound.swift in Sources */,
+				E5AFE88D27D8B729008A89BD /* SoundwaveSlider.swift in Sources */,
+				E5AFE89827DA3C53008A89BD /* CircleButton.swift in Sources */,
+				E5AFE88B27D8B6D0008A89BD /* MagnitudeChart.swift in Sources */,
 				E5AFE87527D7A8F6008A89BD /* ContentView.swift in Sources */,
+				E5AFE88127D7AAC7008A89BD /* HeaderView.swift in Sources */,
+				E5AFE89327D8F682008A89BD /* SoundwaveRow.swift in Sources */,
+				E5AFE88827D8A5B1008A89BD /* Double.swift in Sources */,
 				E5AFE87327D7A8F6008A89BD /* SoundMixApp.swift in Sources */,
+				E5AFE88F27D8C33B008A89BD /* UIScreen.swift in Sources */,
+				E5AFE89D27DB548B008A89BD /* AudioNodeViewModel.swift in Sources */,
+				E5AFE89B27DA3EFA008A89BD /* AudioListViewModel.swift in Sources */,
+				E5AFE89127D8F3D1008A89BD /* SoundsList.swift in Sources */,
+				E5AFE89F27DB556B008A89BD /* AVMutableCompositionTrack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +361,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SoundMix/Preview Content\"";
+				DEVELOPMENT_TEAM = UH2754JCY3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -297,6 +390,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SoundMix/Preview Content\"";
+				DEVELOPMENT_TEAM = UH2754JCY3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
