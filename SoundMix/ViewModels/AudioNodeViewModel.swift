@@ -23,6 +23,10 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
 
     init(sound: Sound) {
         self.sound = sound
+
+        super.init()
+        // setup the audio metering
+        setupAudioMeteringSamples()
     }
 
     init(url: URL, audioName: String? = nil) {
@@ -30,6 +34,11 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
         if let audioName = audioName {
             sound.name = audioName
         }
+
+        super.init()
+    }
+
+    func setupAudioMeteringSamples() {
     }
 
     func playOrPauseAudio() {
@@ -57,7 +66,11 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
 
             // update the progress view
             let updater = CADisplayLink(target: self, selector: #selector(updateProgress))
-            updater.preferredFramesPerSecond = 60
+            
+            // set the FPS to the display rate of the device
+            let refreshRate = UIScreen.screens[0].maximumFramesPerSecond
+            updater.preferredFramesPerSecond = max(refreshRate, 60)
+
             updater.add(to: RunLoop.current, forMode: RunLoop.Mode.common)
 
             updateProgress()

@@ -10,6 +10,11 @@ import SwiftUI
 
 struct MagnitudeChart: Shape {
     var values: [CGFloat] = [0, 2, 4, 1, 3, 5, 4, 3, 1, 3, 4, 5, 7, 9, 7, 9, 5, 3, 4, 7, 6, 3, 2, 3, 4, 5, 2, 3, 1, 1, 0]
+    
+    func displayCustomValues() {
+        
+    }
+    
     func path(in rect: CGRect) -> Path {
         let maxValue = values.max() ?? 9
         let minValue = values.min() ?? 0
