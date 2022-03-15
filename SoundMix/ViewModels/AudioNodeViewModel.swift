@@ -19,6 +19,7 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
             }
         }
     }
+
     var audioPlayer: AVAudioPlayer?
     @Published var playerProgress: Double = 0.00
 
@@ -91,6 +92,8 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
             return
         }
 
+        print("Audio player current time: \(audioPlayer.currentTime)")
+
         if !audioPlayer.isPlaying && !isPlaying {
             audioPlayer.prepareToPlay()
             audioPlayer.play()
@@ -125,6 +128,11 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
             return
         }
         // pause the player
-        audioPlayer.stop()
+        pauseAudio()
+
+        let seekFrame = audioLengthSeconds * position
+        print("Updated seek frame: \(seekFrame)")
+
+        audioPlayer.currentTime = seekFrame
     }
 }
