@@ -66,7 +66,7 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
 
             // update the progress view
             let updater = CADisplayLink(target: self, selector: #selector(updateProgress))
-            
+
             // set the FPS to the display rate of the device
             let refreshRate = UIScreen.screens[0].maximumFramesPerSecond
             updater.preferredFramesPerSecond = max(refreshRate, 60)
@@ -109,5 +109,9 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
 
         let normalizedTime = Double(audioPlayer.currentTime / audioPlayer.duration)
         playerProgress = normalizedTime
+    }
+
+    @objc func seekToPosition(position: Double) {
+        print("New position to seek to: \(position)")
     }
 }

@@ -12,14 +12,15 @@ struct SoundwaveSlider: View {
     @Binding var value: Double
     @State var height: Double = 60
     @State var width: Double = 320
-    
+    var seekCompletion: (Double) -> Void = { _ in }
+
     var body: some View {
         let background = Color(red: 0.07, green: 0.07, blue: 0.12)
         return ZStack {
 //            background.edgesIgnoringSafeArea(.all)
             VStack(spacing: 30) {
                 Group {
-                    CustomSlider(value: $value, range: (0, 1), knobWidth: 0) { modifiers in
+                    CustomSlider(value: $value, completion: seekCompletion, range: (0, 1), knobWidth: 0) { modifiers in
                         ZStack {
                             LinearGradient(gradient: .init(colors: [Color("pink_accent_color"), Color.purple]), startPoint: .leading, endPoint: .trailing)
                             Group {

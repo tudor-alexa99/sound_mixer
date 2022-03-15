@@ -14,7 +14,7 @@ struct HeaderView: View {
     var body: some View {
         VStack {
             upperHeaderView
-            SoundwaveSlider(value: .constant(30.0))
+            SoundwaveSlider(value: .constant(30.0), seekCompletion: { _ in })
                 .padding(10)
         }.clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
             .overlay {

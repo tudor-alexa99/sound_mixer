@@ -13,14 +13,16 @@ struct CustomSlider<Component: View>: View {
     var range: (Double, Double)
     var knobWidth: CGFloat?
     let viewBuilder: (CustomSliderComponents) -> Component
+    var seekCompletion: (Double) -> Void
 
-    init(value: Binding<Double>, range: (Double, Double), knobWidth: CGFloat? = nil,
+    init(value: Binding<Double>, completion: @escaping (Double) -> Void, range: (Double, Double), knobWidth: CGFloat? = nil,
          _ viewBuilder: @escaping (CustomSliderComponents) -> Component
     ) {
         _value = value
         self.range = range
         self.viewBuilder = viewBuilder
         self.knobWidth = knobWidth
+        seekCompletion = completion
     }
 
     var body: some View {
@@ -49,7 +51,6 @@ struct CustomSlider<Component: View>: View {
         return ZStack { viewBuilder(modifiers).gesture(drag) }
     }
 
-    
     private func onDragChange(_ drag: DragGesture.Value, _ frame: CGRect) {
         let width = (knob: Double(knobWidth ?? frame.size.height), view: Double(frame.size.width))
         let xrange = (min: Double(0), max: Double(width.view - width.knob))
@@ -59,6 +60,7 @@ struct CustomSlider<Component: View>: View {
         value = value < xrange.min ? xrange.min : value // limit to trailing edge
         value = value.convert(fromRange: (xrange.min, xrange.max), toRange: range)
         self.value = value
+        seekCompletion(value)
     }
 
     private func getOffsetX(frame: CGRect) -> CGFloat {

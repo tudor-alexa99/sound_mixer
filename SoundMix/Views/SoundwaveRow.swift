@@ -33,7 +33,8 @@ struct SoundwaveRow: View {
             VStack {
                 SoundwaveSlider(value:$viewModel.playerProgress,
                                 height: 40,
-                                width: 200)
+                                width: 200,
+                                seekCompletion: viewModel.seekToPosition)
                     .padding()
             }
 
