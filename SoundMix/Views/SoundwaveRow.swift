@@ -10,7 +10,7 @@ import SwiftUI
 struct SoundwaveRow: View {
     @ObservedObject var viewModel: AudioNodeViewModel
 
-    @State var isPlaying: Bool = false
+//    @State var isPlaying: Bool = false
 
     init(viewModel: AudioNodeViewModel) {
         self.viewModel = viewModel
@@ -21,9 +21,8 @@ struct SoundwaveRow: View {
             Button(action: {
                 print("Playing \(viewModel.sound.name)")
                 viewModel.playOrPauseAudio()
-                isPlaying.toggle()
             }) {
-                Image(systemName: isPlaying ? "pause.fill" : "play.fill")
+                Image(systemName: viewModel.isPlaying ? "pause.fill" : "play.fill")
                     .foregroundColor(Color("light_background_color"))
                     .padding()
                     .background(Color("main_background_color"))
@@ -31,7 +30,7 @@ struct SoundwaveRow: View {
                     .padding(5)
             }
             VStack {
-                SoundwaveSlider(value:$viewModel.playerProgress,
+                SoundwaveSlider(value: $viewModel.playerProgress,
                                 height: 40,
                                 width: 200,
                                 seekCompletion: viewModel.seekToPosition)

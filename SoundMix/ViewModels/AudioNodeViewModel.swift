@@ -12,7 +12,13 @@ import SwiftUI
 class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
     let id = UUID()
     var sound: Sound
-    var isPlaying: Bool = false
+    var isPlaying = false {
+        willSet {
+            withAnimation {
+                objectWillChange.send()
+            }
+        }
+    }
     var audioPlayer: AVAudioPlayer?
     @Published var playerProgress: Double = 0.00
 
@@ -20,6 +26,7 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
     private var currentPosition: AVAudioFramePosition = 0
     private var audioSeekFrame: AVAudioFramePosition = 0
     private var audioLengthSamples: AVAudioFramePosition = 0
+    private var audioLengthSeconds: Double = 0.0
 
     init(sound: Sound) {
         self.sound = sound
@@ -27,6 +34,7 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
         super.init()
         // setup the audio metering
         setupAudioMeteringSamples()
+        setupAudioPlayer()
     }
 
     init(url: URL, audioName: String? = nil) {
@@ -43,7 +51,6 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
 
     func playOrPauseAudio() {
         guard audioPlayer != nil else {
-            setupAudioPlayer()
             return
         }
 
@@ -60,12 +67,12 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
                 print(error.localizedDescription)
             }
 
-            isPlaying = true
-            audioPlayer!.prepareToPlay()
-            audioPlayer!.play()
-
             // update the progress view
             let updater = CADisplayLink(target: self, selector: #selector(updateProgress))
+
+            // get the audio duration, sample rate and length in seconds of the audio file
+            audioLengthSeconds = audioPlayer!.duration
+            print("audio length in seconds: \(audioLengthSeconds)")
 
             // set the FPS to the display rate of the device
             let refreshRate = UIScreen.screens[0].maximumFramesPerSecond
@@ -73,8 +80,7 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
 
             updater.add(to: RunLoop.current, forMode: RunLoop.Mode.common)
 
-            updateProgress()
-
+            soundUrl.stopAccessingSecurityScopedResource()
         } else {
             print("Unable to access security scoped resource!")
         }
@@ -86,6 +92,7 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
         }
 
         if !audioPlayer.isPlaying && !isPlaying {
+            audioPlayer.prepareToPlay()
             audioPlayer.play()
             isPlaying = true
         }
@@ -113,5 +120,11 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
 
     @objc func seekToPosition(position: Double) {
         print("New position to seek to: \(position)")
+
+        guard let audioPlayer = audioPlayer else {
+            return
+        }
+        // pause the player
+        audioPlayer.stop()
     }
 }
