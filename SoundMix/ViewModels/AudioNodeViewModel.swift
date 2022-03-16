@@ -9,7 +9,7 @@ import AVFAudio
 import Foundation
 import SwiftUI
 
-class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
+class AudioNodeViewModel: NSObject, Identifiable, ObservableObject, AVAudioPlayerDelegate {
     let id = UUID()
     var sound: Sound
     var isPlaying = false {
@@ -27,15 +27,16 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
     private var currentPosition: AVAudioFramePosition = 0
     private var audioSeekFrame: AVAudioFramePosition = 0
     private var audioLengthSamples: AVAudioFramePosition = 0
-    private var audioLengthSeconds: Double = 0.0
+    
+    var audioLengthSeconds: Double = 0.0
 
     init(sound: Sound) {
         self.sound = sound
 
         super.init()
         // setup the audio metering
-        setupAudioMeteringSamples()
         setupAudioPlayer()
+        setupAudioMeteringSamples()
     }
 
     init(url: URL, audioName: String? = nil) {
@@ -52,6 +53,7 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
 
     func playOrPauseAudio() {
         guard audioPlayer != nil else {
+            setupAudioPlayer()
             return
         }
 
@@ -66,13 +68,20 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
                 audioPlayer = try AVAudioPlayer(contentsOf: soundUrl)
             } catch {
                 print(error.localizedDescription)
+                do {
+                    let audioFile =  try AVAudioFile(forReading: soundUrl)
+                } catch {
+                    print(error.localizedDescription)
+                }
             }
+            // set the delegate to self
+            audioPlayer?.delegate = self
 
             // update the progress view
             let updater = CADisplayLink(target: self, selector: #selector(updateProgress))
 
             // get the audio duration, sample rate and length in seconds of the audio file
-            audioLengthSeconds = audioPlayer!.duration
+            audioLengthSeconds = audioPlayer?.duration ?? 0.0
             print("audio length in seconds: \(audioLengthSeconds)")
 
             // set the FPS to the display rate of the device
@@ -101,7 +110,7 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
         }
     }
 
-    func pauseAudio() {
+    func pauseAudio(didReachEnd: Bool = false) {
         guard let audioPlayer = audioPlayer else {
             return
         }
@@ -130,9 +139,28 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject {
         // pause the player
         pauseAudio()
 
-        let seekFrame = audioLengthSeconds * position
+        var seekFrame = audioLengthSeconds * position
+
+        // if the user drags the progress to the end of the file, set the seek frame to the length of the audio
+        // if the user drags the progress to the beginning, set the seek to 0.0
+        seekFrame = max(seekFrame, 0.0)
+        seekFrame = min(seekFrame, audioLengthSeconds - 0.1)
+
         print("Updated seek frame: \(seekFrame)")
 
         audioPlayer.currentTime = seekFrame
+    }
+
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        if flag {
+            // After successfully finish song playing will stop audio player and remove from memory
+            audioPlayer?.stop()
+            
+            playerProgress = audioLengthSeconds
+            isPlaying = false
+            
+            audioPlayer = nil
+            setupAudioPlayer()
+        }
     }
 }

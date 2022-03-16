@@ -24,6 +24,7 @@
 		E5AFE89B27DA3EFA008A89BD /* AudioListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE89A27DA3EFA008A89BD /* AudioListViewModel.swift */; };
 		E5AFE89D27DB548B008A89BD /* AudioNodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE89C27DB548B008A89BD /* AudioNodeViewModel.swift */; };
 		E5AFE89F27DB556B008A89BD /* AVMutableCompositionTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE89E27DB556B008A89BD /* AVMutableCompositionTrack.swift */; };
+		E5AFE8A127E1F410008A89BD /* MasterSoundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFE8A027E1F410008A89BD /* MasterSoundViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		E5AFE89A27DA3EFA008A89BD /* AudioListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioListViewModel.swift; sourceTree = "<group>"; };
 		E5AFE89C27DB548B008A89BD /* AudioNodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioNodeViewModel.swift; sourceTree = "<group>"; };
 		E5AFE89E27DB556B008A89BD /* AVMutableCompositionTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVMutableCompositionTrack.swift; sourceTree = "<group>"; };
+		E5AFE8A027E1F410008A89BD /* MasterSoundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSoundViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			children = (
 				E5AFE89A27DA3EFA008A89BD /* AudioListViewModel.swift */,
 				E5AFE89C27DB548B008A89BD /* AudioNodeViewModel.swift */,
+				E5AFE8A027E1F410008A89BD /* MasterSoundViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				E5AFE89827DA3C53008A89BD /* CircleButton.swift in Sources */,
 				E5AFE88B27D8B6D0008A89BD /* MagnitudeChart.swift in Sources */,
 				E5AFE87527D7A8F6008A89BD /* ContentView.swift in Sources */,
+				E5AFE8A127E1F410008A89BD /* MasterSoundViewModel.swift in Sources */,
 				E5AFE88127D7AAC7008A89BD /* HeaderView.swift in Sources */,
 				E5AFE89327D8F682008A89BD /* SoundwaveRow.swift in Sources */,
 				E5AFE88827D8A5B1008A89BD /* Double.swift in Sources */,

@@ -20,7 +20,7 @@ struct SoundsList: View {
         ZStack {
             VStack {
                 List {
-                    Section(header: HeaderView()) {
+                    Section(header: HeaderView(headerViewModel: MasterSoundViewModel(audioList: viewModel))) {
                         ForEach(viewModel.audioList, id: \.id) { viewModel in
                             SoundwaveRow(viewModel: viewModel)
                         }

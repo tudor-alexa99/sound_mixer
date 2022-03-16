@@ -9,12 +9,14 @@ import Foundation
 import SwiftUI
 
 struct HeaderView: View {
-    @State var value: Double = 30
+    @State var value: Double = 0.3
+    @ObservedObject var headerViewModel: MasterSoundViewModel
+    
 
     var body: some View {
         VStack {
             upperHeaderView
-            SoundwaveSlider(value: .constant(30.0), seekCompletion: { _ in })
+            SoundwaveSlider(value: .constant(0.3), seekCompletion: { _ in })
                 .padding(10)
         }.clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
             .overlay {
@@ -52,6 +54,6 @@ struct HeaderView: View {
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView()
+        HeaderView(headerViewModel: MasterSoundViewModel(audioList: AudioListViewModel()))
     }
 }
