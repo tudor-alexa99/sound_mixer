@@ -48,6 +48,7 @@ class MasterSoundViewModel: NSObject, Identifiable, ObservableObject, AVAudioPla
         // schedule the file for full playback
         do {
             try audioEngine.start()
+            playerNode.scheduleFile(audioFile!, at: nil)
             playerNode.play()
         } catch {
             print("Error setting up the audio engine \(error.localizedDescription)")
