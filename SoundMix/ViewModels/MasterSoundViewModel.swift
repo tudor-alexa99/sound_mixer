@@ -12,6 +12,7 @@ class MasterSoundViewModel: NSObject, Identifiable, ObservableObject, AVAudioPla
     let id = UUID()
     var totalTimelineAudioLength: Double = 0.0
     let currentTimelinePosition: Double = 0.0
+    private var audioEngine = AVAudioEngine()
 
     var audioList: AudioListViewModel = AudioListViewModel()
 
@@ -33,5 +34,23 @@ class MasterSoundViewModel: NSObject, Identifiable, ObservableObject, AVAudioPla
     }
 
     func playAllAudioTracks() {
+        let audioFile = audioList.audioList[0].audioFile
+        let playerNode = AVAudioPlayerNode()
+
+        // attach the player node to the audio engine
+        audioEngine.attach(playerNode)
+
+        // connect the player node to the output node
+        audioEngine.connect(playerNode,
+                            to: audioEngine.outputNode,
+                            format: audioFile?.processingFormat)
+
+        // schedule the file for full playback
+        do {
+            try audioEngine.start()
+            playerNode.play()
+        } catch {
+            print("Error setting up the audio engine \(error.localizedDescription)")
+        }
     }
 }

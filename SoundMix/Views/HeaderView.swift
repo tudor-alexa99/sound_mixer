@@ -33,7 +33,7 @@ struct HeaderView: View {
         VStack {
             HStack {
                 Button(action: {
-                    print("Play button pressed")
+                    headerViewModel.playAllAudioTracks()
                 }) {
                     Image(systemName: "play.fill")
                         .foregroundColor(Color("light_background_color"))

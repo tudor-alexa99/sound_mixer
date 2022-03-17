@@ -21,20 +21,21 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject, AVAudioPlaye
     }
 
     var audioPlayer: AVAudioPlayer?
+    var audioFile: AVAudioFile?
+    
     @Published var playerProgress: Double = 0.00
+    var audioLengthSeconds: Double = 0.0
 
     private var seekFrame: AVAudioFramePosition = 0
     private var currentPosition: AVAudioFramePosition = 0
     private var audioSeekFrame: AVAudioFramePosition = 0
     private var audioLengthSamples: AVAudioFramePosition = 0
-    
-    var audioLengthSeconds: Double = 0.0
 
     init(sound: Sound) {
         self.sound = sound
 
         super.init()
-        // setup the audio metering
+        // setup the audio player and audio node
         setupAudioPlayer()
         setupAudioMeteringSamples()
     }
@@ -66,13 +67,9 @@ class AudioNodeViewModel: NSObject, Identifiable, ObservableObject, AVAudioPlaye
         if soundUrl.startAccessingSecurityScopedResource() {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: soundUrl)
+                audioFile = try AVAudioFile(forReading: soundUrl)
             } catch {
                 print(error.localizedDescription)
-                do {
-                    let audioFile =  try AVAudioFile(forReading: soundUrl)
-                } catch {
-                    print(error.localizedDescription)
-                }
             }
             // set the delegate to self
             audioPlayer?.delegate = self
