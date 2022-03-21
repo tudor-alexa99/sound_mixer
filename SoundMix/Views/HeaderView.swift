@@ -11,22 +11,23 @@ import SwiftUI
 struct HeaderView: View {
     @State var value: Double = 0.3
     @ObservedObject var headerViewModel: MasterSoundViewModel
-    
 
     var body: some View {
-        VStack {
-            upperHeaderView
-            SoundwaveSlider(value: .constant(0.3), seekCompletion: { _ in })
-                .padding(10)
-        }.clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: 15, style: .continuous).stroke(Color("secondary_background_color"), lineWidth: 0.5)
-            }
-            .background(
-                RoundedRectangle(cornerRadius: 15, style: .continuous)
-                    .fill(Color("secondary_background_color"))
-            )
-            .shadow(radius: 1)
+        NavigationLink(destination: RulerView()) {
+            VStack {
+                upperHeaderView
+                SoundwaveSlider(value: .constant(0.3), seekCompletion: { _ in })
+                    .padding(10)
+            }.clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 15, style: .continuous).stroke(Color("secondary_background_color"), lineWidth: 0.5)
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 15, style: .continuous)
+                        .fill(Color("secondary_background_color"))
+                )
+                .shadow(radius: 1)
+        }
     }
 
     var upperHeaderView: some View {

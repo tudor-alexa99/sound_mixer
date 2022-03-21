@@ -41,41 +41,18 @@ class MasterSoundViewModel: NSObject, Identifiable, ObservableObject, AVAudioPla
     // MARK: - Audio playback
 
     func playAllAudioTracks() {
-        let audioFile1 = audioList.audioList[0].audioFile
-        let audioFile2 = audioList.audioList[1].audioFile
 
-        let playerNode1 = AVAudioPlayerNode()
-        let playerNode2 = AVAudioPlayerNode()
-
-        // create a mixer node to combine the existing nodes together
-        let mixerNode = AVAudioMixerNode()
-
-        // attach the player node to the audio engine
-        audioEngine.attach(playerNode1)
-        audioEngine.attach(playerNode2)
-        audioEngine.attach(mixerNode)
+        // attach the player nodes to the audio engine
+        attachAllNodes()
 
         // connect the player node to the output node
-        audioEngine.connect(playerNode1,
-                            to: mixerNode,
-                            format: audioFile1?.processingFormat)
-
-        audioEngine.connect(playerNode2,
-                            to: mixerNode,
-                            format: audioFile2?.processingFormat)
-
-        audioEngine.connect(mixerNode,
-                            to: audioEngine.outputNode,
-                            format: audioFile1?.processingFormat)
+        connectAllNodes()
 
         // schedule the file for full playback
         do {
             try audioEngine.start()
-            playerNode1.scheduleFile(audioFile1!, at: nil)
-            playerNode2.scheduleFile(audioFile2!, at: nil)
-            playerNode1.play()
-            playerNode2.play()
-
+            scheduleAllNodes()
+            playAllScheduledNodes()
             // schedule the mixer node instead
 
         } catch {
